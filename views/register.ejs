@@ -1,0 +1,24 @@
+<% include partials/header %>
+
+<h3>register</h3>
+<div class="row">
+    <form class="col s6 offset-s3">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="email" type="email" name="email" class="validate">
+                <label for="email">Email</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password" type="password" name="password" class="validate">
+                <label for="password">Password</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="password-conf" type="password" name="password-conf" class="validate">
+                <label for="password-conf">Confirm Password</label>
+            </div>
+            <input class="btn blue col offset-s5" type="submit" placeholder="Register">
+        </div>
+    </form>
+</div>
+
+<% include partials/footer %>
