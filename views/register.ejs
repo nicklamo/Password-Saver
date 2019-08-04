@@ -2,21 +2,21 @@
 
 <h3>register</h3>
 <div class="row">
-    <form class="col s6 offset-s3">
+    <form class="col s6 offset-s3" method="post" action="/register">
         <div class="row">
             <div class="input-field col s12">
-                <input id="email" type="email" name="email" class="validate">
+                <input id="email" type="email" name="email" class="validate" required>
                 <label for="email">Email</label>
             </div>
             <div class="input-field col s12">
-                <input id="password" type="password" name="password" class="validate">
+                <input id="password" type="password" name="password" class="validate" required>
                 <label for="password">Password</label>
             </div>
             <div class="input-field col s12">
-                <input id="password-conf" type="password" name="password-conf" class="validate">
+                <input id="password-conf" type="password" name="password_conf" class="validate" required>
                 <label for="password-conf">Confirm Password</label>
             </div>
-            <input class="btn blue col offset-s5" type="submit" placeholder="Register">
+            <button class="btn blue col offset-s5">Register</button>
         </div>
     </form>
 </div>

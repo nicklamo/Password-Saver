@@ -14,11 +14,21 @@
       <div class="nav-wrapper">
         <a href="/" class="brand-logo"><i class="material-icons">lock_outline</i>Password Saver</a>
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-          <li><a href="/passwords">View Passwords</a></li>
-          <li><a href="/register">Register</a></li>
-          <li><a href="/login">Login</a></li>
+          <% if(!currentUser) {%>
+            <li><a href="/register">Register</a></li>
+            <li><a href="/login">Login</a></li>
+          <%} else { %>
+            <li><a href="/passwords">View Passwords</a></li>
+          <% }%>
         </ul>
       </div>
     </div>
   </nav>
   <div class="container">
+      <%if (messages.error) {%>
+        <br>
+        <br>
+        <div>
+          <%= messages.error%>
+        </div>
+     <%}%>
