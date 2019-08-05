@@ -21,7 +21,6 @@ router.post('/register', middleware.checkNotAutheniticated ,async (req,res) => {
         //store user in database
         const newUser = await new User({username: req.body.email});
         const registered = await User.register(newUser, req.body.password);
-        console.log(registered);
         passport.authenticate('local');
         res.redirect('/login');
     } catch(e){

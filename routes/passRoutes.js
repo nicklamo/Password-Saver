@@ -9,9 +9,8 @@ const User = require('../models/user');
 
 //show passwords
 router.get('/passwords', middleware.checkAuthenticated,(req,res) => {
-    const passwords = Password.find({id:req.user._id})
-    console.log(passwords);
-    res.render('passwords', {currentUser: req.user, passwords:passwords});
+    console.log(req.user.passwords)
+    res.render('passwords', {currentUser: req.user});
 });
 
 //show new password form
@@ -22,17 +21,14 @@ router.get('/passwords/new', middleware.checkAuthenticated,(req,res) => {
 //create new password post route
 router.post('/passwords', middleware.checkAuthenticated, async (req,res) => {
     try {
-        //format new password
-        const author = {
-            id: req.user._id,
-            username: req.user.username
-        };
         const password = req.body.password;
         const passwordFor = req.body.for;
-        const newPassword = {for: passwordFor, password:password, author: author}
+        const newPassword = {for: passwordFor, password:password}
         console.log(newPassword)
         //put new password in database users password array
-        await Password.create(newPassword);
+        const currentUser = req.user;
+        currentUser.passwords.push(newPassword);
+        currentUser.save();
         //redirect to passwords page
         res.redirect('/passwords');
     } catch(e) {
