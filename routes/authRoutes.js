@@ -41,7 +41,7 @@ router.get('/login', middleware.checkNotAutheniticated ,(req,res) =>{
 //login a user
 router.post('/login',passport.authenticate('local', {
     successRedirect: '/passwords',
-    failureRedirect: '/home',
+    failureRedirect: '/',
     failureFlash: true
 }));
 

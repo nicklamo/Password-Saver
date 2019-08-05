@@ -1,5 +1,20 @@
 <% include partials/header %>
 
-<h1>new password from on this page</h1>
+<h3>New Password</h3>
+<div class="row">
+    <form class="col s6 offset-s3" method="post" action="/passwords">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="text" name="password" class="validate" required>
+                <label for="password">Password you want to save</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="for" type="text" name="for" class="validate" required>
+                <label for="for">What is this Password For?</label>
+            </div>
+            <button class="btn blue col offset-s5">Login</button>
+        </div>
+    </form>
+</div>
 
 <% include partials/footer %>

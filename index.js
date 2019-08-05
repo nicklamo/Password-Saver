@@ -9,8 +9,10 @@ const mongoose = require('mongoose');
 const flash = require('express-flash');
 const session = require('express-session');
 const LocalStrategy = require('passport-local');
-const bcrypt = require('bcrypt');
 const methodOverride = require('method-override');
+const bodyParser = require("body-parser")
+const seedDB = require('./seed');
+seedDB();
 
 //require schema models
 const User = require('./models/user');
@@ -22,8 +24,10 @@ const passRoutes = require('./routes/passRoutes');
 
 //configure app and database
 app.set('view engine', 'ejs');
-app.use(express.urlencoded({extended:false}));
-mongoose.connect('mongodb://localhost/password_app', {useNewUrlParser: true});
+app.use(bodyParser.urlencoded({extended: true}));
+mongoose.connect('mongodb://localhost/password_app', {useNewUrlParser: true}, (req,res) => {
+    console.log('Database Connected');
+});
 app.use(methodOverride('_method'));
 app.use(flash());
 
