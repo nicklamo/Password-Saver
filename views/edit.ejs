@@ -1,0 +1,28 @@
+<% include partials/header %>
+<script>
+    $(document).ready(function () {
+        M.updateTextFields();
+    });
+</script>
+
+<div class="row">
+    <h3>Edit Password</h3>
+    <form class="col s6 offset-s3" method="post" action="/passwords/<%=password._id%>?_method=PUT">
+        <div class="row">
+            <div class="input-field col s12">
+                <input id="password" type="text" name="password" class="validate" value="<%=password.password%>"
+                    required>
+                <label class="active" for="password">Password you want to save</label>
+            </div>
+            <div class="input-field col s12">
+                <input id="for" type="text" name="for" class="validate" value="<%=password.for%>" required>
+                <label class="active" for="for">What is this Password For?</label>
+            </div>
+            <button class="btn blue col offset-s5">Edit</button>
+        </div>
+    </form>
+</div>
+
+
+
+<% include partials/footer %>

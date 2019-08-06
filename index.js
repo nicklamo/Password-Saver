@@ -1,4 +1,4 @@
-if(process.env.NODE_ENV !== 'production'){
+if (process.env.NODE_ENV !== 'production') {
     require('dotenv').config()
 }
 //require packages
@@ -12,7 +12,7 @@ const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
 const bodyParser = require("body-parser")
 const seedDB = require('./seed');
-seedDB();
+// seedDB();
 
 //require schema models
 const User = require('./models/user');
@@ -24,8 +24,9 @@ const passRoutes = require('./routes/passRoutes');
 
 //configure app and database
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect('mongodb://localhost/password_app', {useNewUrlParser: true}, (req,res) => {
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }))
+mongoose.connect('mongodb://localhost/password_app', { useNewUrlParser: true }, (req, res) => {
     console.log('Database Connected');
 });
 app.use(methodOverride('_method'));
@@ -44,16 +45,16 @@ passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
-app.use(function(req,res,next){
+app.use(function (req, res, next) {
     res.locals.currentUser = req.user;
     next();
-  })
+})
 
 // ======
 // Routes
 // ======
-app.get('/', (req,res) => {
-    res.render('home',{currentUser: req.user});
+app.get('/', (req, res) => {
+    res.render('home', { currentUser: req.user });
 });
 
 //other routes
