@@ -33,7 +33,7 @@ app.use(methodOverride('_method'));
 app.use(flash());
 
 app.use(session({
-    secret: process.env.SESSION_SECRET,
+    secret: ';klasdjf;lsdfjl;kaf',
     resave: false,
     saveUninitialized: false
 }));
