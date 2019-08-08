@@ -59,6 +59,7 @@ app.get('/', (req, res) => {
 app.use(passRoutes);
 app.use(authRoutes);
 
-app.listen(3000, () => {
-    console.log('Started on port 3000...');
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Server started on port ${PORT}`);
 });
