@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user')
 const passport = require('passport');
 const middleware = require('../middleware');
-
+const keys = require('../keys');
 // ====================
 // registration routes
 // ====================
@@ -19,8 +19,9 @@ router.post('/register', middleware.checkNotAutheniticated, async (req, res) => 
             res.redirect('/register');
         }
         //store user in database
-        const newUser = User({ username: req.body.email });
-        User.register(newUser, req.body.password);
+        console.log(process.env.MONGODB_KEY);
+        const newUser = await User({ username: req.body.email });
+        await User.register(newUser, req.body.password);
         passport.authenticate('local');
         res.redirect('/login');
     } catch (e) {
