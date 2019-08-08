@@ -7,7 +7,8 @@ const flash = require('express-flash');
 const session = require('express-session');
 const LocalStrategy = require('passport-local');
 const methodOverride = require('method-override');
-const bodyParser = require("body-parser")
+const bodyParser = require("body-parser");
+const keys = require('./keys.js');
 const seedDB = require('./seed');
 // seedDB();
 
@@ -23,14 +24,14 @@ const passRoutes = require('./routes/passRoutes');
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.urlencoded({ extended: false }))
-mongoose.connect('mongodb://localhost/password_app', { useNewUrlParser: true }, (req, res) => {
+mongoose.connect(keys.mongodb, { useNewUrlParser: true }, (req, res) => {
     console.log('Database Connected');
 });
 app.use(methodOverride('_method'));
 app.use(flash());
 
 app.use(session({
-    secret: ';klasdjf;lsdfjl;kaf',
+    secret: keys.secretKey,
     resave: false,
     saveUninitialized: false
 }));
