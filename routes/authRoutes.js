@@ -19,7 +19,6 @@ router.post('/register', middleware.checkNotAutheniticated, async (req, res) => 
             res.redirect('/register');
         }
         //store user in database
-        console.log(process.env.MONGODB_KEY);
         const newUser = await User({ username: req.body.email });
         await User.register(newUser, req.body.password);
         passport.authenticate('local');
