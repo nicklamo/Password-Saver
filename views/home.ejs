@@ -1,8 +1,9 @@
 <% include partials/header %>
+<div class="center-align">
+    <h3>Welcome to Password Saver</h3>
 
-<h1 class="center-align">Home page</h1>
-<%if(currentUser){%>
-<form action="/logout?_method=DELETE" method="POST">
-    <button type="submit">Log Out</button>
-</form>
-<%}%>
+    <p>This app helps you save your passwords</p>
+</div>
+
+
+<% include partials/footer%>
