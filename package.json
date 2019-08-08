@@ -4,7 +4,8 @@
   "description": "Reworked password app from CSCI 3308",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "start": "nodemon index.js"
   },
   "author": "Nick La Monica",
   "license": "ISC",
